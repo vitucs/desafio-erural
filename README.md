@@ -1,24 +1,22 @@
-# README
+# Clone o repositório para sua máquina local:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  git clone https://github.com/vitucs/desafio-erural.git
 
-Things you may want to cover:
+# Navegue para o diretório do projeto:
 
-* Ruby version
+  cd desafio-erural
 
-* System dependencies
+# Instale as dependências do projeto:
 
-* Configuration
+  bundle install
 
-* Database creation
+# Crie o banco de dados e execute as migrações:
 
-* Database initialization
+  rails db:create
+  rails db:migrate
+    
+# Execute o servidor Rails:
 
-* How to run the test suite
+  rails server
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Acesse o projeto no navegador em http://localhost:3000

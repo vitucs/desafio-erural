@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 style="font-weight: bold; font-size: 18px;">Cadastrar nova sala</h1>
+ <br>
+    <%= form_tag upload_path, method: :post, multipart: true do %>
+        <div class="form-group">
+            <%= label_tag(:name, "Nome") %>
+            <%= text_field_tag :name, @user , disabled:true%>
+        </div>
+        <div class="form-group">
+            <%= label_tag(:title, "Titulo") %>
+            <%= text_field_tag :title, "", required:true %>
+        </div>
+        <div class="form-group">
+            <%= label_tag(:description, "Descricao") %>
+            <%= text_field_tag :description, "", required: true %>
+        </div>
+        <div class="form-group">
+            <%= label_tag(:video, "Upload do video") %>
+            <%= file_field_tag :video, required: true %>
+        </div>
+        <%= submit_tag("Cadastrar Sala", class: "btn btn-primary") %>
+    <% end %>
+</div>

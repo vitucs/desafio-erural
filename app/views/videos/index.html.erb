@@ -1,0 +1,50 @@
+
+  <head>
+    <title>Video e Chat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8" id="section_video">
+          <video controls>
+            <source src="/videos/<%=@video.url%>" type="video/mp4"> 
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="col-md-4" id="section_chat">
+          <div id="chat">
+            <div style="text-align: right;">
+              <%= link_to "Voltar", "/pages/salas", class: "btn btn-primary back_buttom" %>
+            </div>
+            <div id="chat_header">
+              <label>Chat</label>
+              <p><span class="pin"></span><%= @video.views ? @video.views : 0 %> espectadores</p>
+            </div>
+            <div id="comentarios">
+              <ul>
+                <% if @arrayMessages %>
+                  <% @arrayMessages.each do |message| %>
+                    <li class="comentario"><%= message[0]%> diz: <%= message[1]%></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+            <div id="new_comentario">
+              <%= form_tag new_comentario_path, method: :post do %>
+                <%= text_field_tag :comentario, "", :id => "comentario_content", required:true %>
+                <%= text_field_tag :nome, session[:name], style: 'display:none;' %>
+                <%= text_field_tag :nome, params[:id] ? params[:id] : session[:video_id], style: 'display:none;' %>
+                <button id="botao_submit" type="submit"><span class="material-icons">send</span></button>               
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
